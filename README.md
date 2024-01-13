@@ -356,7 +356,7 @@
 					} else {
 						document.getElementById('epciInfo').textContent = `Métropole du Grand Paris – dépend d'un EPT`;
 					}
-					axios.get('https://raw.githubusercontent.com/vope33/carbu/main/plu').then(response => response.data).then(text => {
+					axios.get('https://raw.githubusercontent.com/PaysagesdeFrance/pdf/main/plu').then(response => response.data).then(text => {
 						const lines = text.split('\n');
 						const line = lines.find(line => line.match(`^${codeEpci},`));
 						if(line) {
@@ -375,13 +375,13 @@
 							}
 						}
 					});
-					axios.get('https://raw.githubusercontent.com/vope33/carbu/main/insee').then(response => response.data).then(text => {
+					axios.get('https://raw.githubusercontent.com/PaysagesdeFrance/pdf/main/insee').then(response => response.data).then(text => {
 						const lines = text.split('\n');
 						const line = lines.find(line => line.match(`^${codeCommune},`));
 						if(line) {
 							const values = line.split(',');
 							let numUniteUrbaine = values[1].toString().substring(0, 5);
-							axios.get('https://raw.githubusercontent.com/vope33/carbu/main/uu').then(response => response.data).then(text => {
+							axios.get('https://raw.githubusercontent.com/PaysagesdeFrance/pdf/main/uu').then(response => response.data).then(text => {
 								const uuLines = text.split('\n');
 								const uuLine = uuLines.find(uuLine => uuLine.includes(`${numUniteUrbaine},`));
 								if(uuLine) {
